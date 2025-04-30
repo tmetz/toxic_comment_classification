@@ -22,11 +22,10 @@ def score(toxic, severe_toxic, obscene, threat, insult, identity_hate):
   else:
     return 0
 
+print("Unzipping embeddings...")
 zip_ref = zipfile.ZipFile('glove.6B.50d.txt.zip', 'r')
 zip_ref.extractall('glove')
 zip_ref.close()
-
-glove_file = 'glove/glove.6B.50d.txt'
 
 dataset = load_dataset('jigsaw_toxicity_pred', data_dir='.')
 
@@ -53,7 +52,7 @@ with open('test.csv', 'r', encoding='latin-1') as test_file, \
 
   for comment_row, label_row in zip(test_reader, labels_reader):
     total_test += 1
-    scores = label_row[1:] #throw out the id, just want the 6 toxicity booleans
+    scores = label_row[1:] # throw out the id, just want the 6 toxicity booleans
     scores = list(map(int, scores))  # change to ints so we can average them
 
     # this dataset is from a competition that had some data with no scores
@@ -118,6 +117,7 @@ vocab_size = len(tokenizer.word_index) + 1
 embedding_matrix = np.zeros((vocab_size, embedding_dim))
 
 embeddings = {}
+glove_file = 'glove/glove.6B.50d.txt'
 with open(glove_file, 'r', encoding='utf-8') as file:
   for line in file:
     values = line.split()
@@ -134,11 +134,11 @@ embedding_layer = keras.layers.Embedding(input_dim=vocab_size, output_dim=embedd
 model = keras.Sequential([
   embedding_layer,
   keras.layers.LSTM(256, return_sequences=False),
-  keras.layers.Dense(50,activation='relu', kernel_regularizer=l2(0.001)), # Hidden layer with 200 nodes and ReLU activation
+  keras.layers.Dense(50,activation='relu', kernel_regularizer=l2(0.001)), # Hidden layer with 50 nodes and ReLU activation
   keras.layers.Dropout(0.1), # prevent overfitting to training data
   keras.layers.Dense(200,activation='relu', kernel_regularizer=l2(0.001)), # Hidden layer with 200 nodes and ReLU activation
   keras.layers.Dropout(0.2), # prevent overfitting to training data
-  keras.layers.Dense(50, activation='relu', kernel_regularizer=l1(0.001)),  # Hidden layer with 200 nodes and ReLU activation
+  keras.layers.Dense(50, activation='relu', kernel_regularizer=l1(0.001)),  # Hidden layer with 50 nodes and ReLU activation
   keras.layers.Dropout(0.1), # prevent overfitting to training data
   keras.layers.Dense(1, activation='sigmoid')  # Output layer for binary sentiment classification
 ])
