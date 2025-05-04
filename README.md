@@ -2,6 +2,8 @@
 
 ## Final Report
 
+Read the final paper [here](https://github.com/tmetz/toxic_comment_classification/blob/main/FinalProjectNLP-Metz.pdf).
+
 ## Final Code Submission
 
 #### How to run this code
@@ -37,4 +39,5 @@ Visit https://www.youtube.com/watch?v=d3DB9UrTa8M to watch the presentation.
 
 ## Slide Deck
 
-The slide deck can be found in this repo ([click here](https://github.com/tmetz/toxic_comment_classification/blob/main/Toxic%20Content%20Filtering.pdf))
+The slide deck can be found in this repo ([click here](https://github.com/tmetz/toxic_comment_classification/blob/main/ToxicContentFilteringSlides
+.pdf))
