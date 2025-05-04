@@ -39,5 +39,4 @@ Visit https://www.youtube.com/watch?v=d3DB9UrTa8M to watch the presentation.
 
 ## Slide Deck
 
-The slide deck can be found in this repo ([click here](https://github.com/tmetz/toxic_comment_classification/blob/main/ToxicContentFilteringSlides
-.pdf))
+The slide deck can be found in this repo ([click here](https://github.com/tmetz/toxic_comment_classification/blob/main/ToxicContentFilteringSlides.pdf))
